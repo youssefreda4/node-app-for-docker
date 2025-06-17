@@ -7,6 +7,7 @@ const { Client } = require('pg');
 //init app
 const PORT = process.env.PORT || 4000;
 const app = express();
+app.use(cors({ origin: "*" }));
 
 //connect to redis
 const REDIS_HOST = 'redis';
@@ -64,5 +65,4 @@ app.get('/data', async (req, res) => {
         `);
 });
 
-app.use(cors({ origin: "*" }));
 app.listen(PORT, () => console.log(`app is up and running on port: ${PORT}`));
