@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const redis = require('redis');
-const morgan = require('morgan')
 const { Client } = require('pg');
 
 //init app
@@ -64,5 +63,4 @@ app.get('/data', async (req, res) => {
         `);
 });
 
-app.use(morgan('combined'))
 app.listen(PORT, () => console.log(`app is up and running on port: ${PORT}`));
