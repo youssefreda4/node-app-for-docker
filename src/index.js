@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const redis = require('redis');
+const cors = require('cors');
 const { Client } = require('pg');
 
 //init app
@@ -63,4 +64,5 @@ app.get('/data', async (req, res) => {
         `);
 });
 
+app.use(cors({ origin: "*" }));
 app.listen(PORT, () => console.log(`app is up and running on port: ${PORT}`));
