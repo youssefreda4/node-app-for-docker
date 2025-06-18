@@ -1,6 +1,7 @@
 services:
   node-app:
     container_name: express-node-app-container
+    image: youssefreda4/node-app
     ports:
       - "4000:4000"
     env_file:
