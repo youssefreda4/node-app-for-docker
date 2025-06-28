@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const redis = require('redis');
 const cors = require('cors');
 const { Client } = require('pg');
-
+const os = require('os');
 //init app
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -54,7 +54,8 @@ mongoose
 
 app.get('/', (req, res) => {
     redisClient.set("products", "products...");
-    res.send('<h1>Hello NodeJs From Docker Hub!<h1/>')
+    console.log(`traffic from ${os.hostname}`)
+    res.send('<h1>Hello Laravel Devs Second Automate!<h1/>')
 });
 
 app.get('/data', async (req, res) => {

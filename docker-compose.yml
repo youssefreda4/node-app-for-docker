@@ -1,11 +1,19 @@
 services:
   node-app:
-    container_name: express-node-app-container
     image: youssefreda4/node-app
     ports:
       - "4000:4000"
     env_file:
       - ./.env
+    deploy:
+      mode: replicated
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
     depends_on:
       # - postgres
       - redis
@@ -48,7 +56,7 @@ services:
   #   environment:
   #     POSTGRES_USER: root
   #     POSTGRES_PASSWORD: example
-    
+
 volumes:
   mongo-db:
   postgres-db:
